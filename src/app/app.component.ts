@@ -6,6 +6,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Item } from './shared/models/item';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'cdk-drag-drop-nested-lists-example',
@@ -13,38 +14,14 @@ import { Item } from './shared/models/item';
   styleUrls: ['app.scss'],
 })
 export class CdkDragDropNestedListsExample implements OnInit {
-  public parentItem: Item;
-  public parentItem2: Item;
   public get connectedDropListsIds(): string[] {
     // We reverse ids here to respect items nesting hierarchy
-    return this.getIdsRecursive(this.parentItem).reverse();
+    return this.appService.connectedDropListsIds;
   }
 
-  constructor() {
-    this.parentItem = new Item({ name: 'parent-item' });
-    this.parentItem2 = new Item({ name: 'parent-item2' });
-  }
+  constructor(private appService: AppService) {}
 
-  public ngOnInit() {
-    this.parentItem.children.push(
-      new Item({
-        name: 'test1',
-        children: [
-          new Item({ name: 'subItem1' }),
-          new Item({ name: 'subItem2' }),
-          new Item({ name: 'subItem3' }),
-        ],
-      }),
-    );
-    this.parentItem2.children.push(
-      new Item({
-        name: 'test2',
-      }),
-      new Item({ name: 'subItem4' }),
-      new Item({ name: 'subItem5' }),
-    );
-    this.parentItem.children.push(new Item({ name: 'test3' }));
-  }
+  public ngOnInit() {}
 
   public onDragDrop(event: CdkDragDrop<Item>) {
     event.container.element.nativeElement.classList.remove('active');
@@ -62,14 +39,15 @@ export class CdkDragDropNestedListsExample implements OnInit {
         event.currentIndex,
       );
     }
+    this.appService.restore2();
   }
 
-  private getIdsRecursive(item: Item): string[] {
-    let ids = [item.uId];
-    item.children.forEach(childItem => {
-      ids = ids.concat(this.getIdsRecursive(childItem));
-    });
-    return ids;
+  public get parentItem(): Item {
+    return this.appService.parentItem;
+  }
+
+  public get parentItem2(): Item {
+    return this.appService.parentItem2;
   }
 
   private canBeDropped(event: CdkDragDrop<Item, Item>): boolean {
