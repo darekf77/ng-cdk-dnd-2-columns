@@ -1,0 +1,40 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#275d91",
+        "activityBar.foreground": "#000000",
+        "statusBar.background": "#275d91"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.rulers": [
+        80,
+        120,
+        140
+    ],
+    "search.exclude": {
+        "**/.git": true,
+        "**/bower_components": true,
+        "**/vendor": true,
+        "**/external": true,
+        "**/node_modules": true
+    },
+    "files.autoSave": "on",
+    "eslint.enable": true,
+    "prettier.enable": true,
+    "prettier.configPath": ".prettierrc.json",
+    "prettier.prettierPath": "./node_modules/prettier",
+    "window.title": "temp/p1-fe-workspace/p1-frontend-wspolne-source-v17 (p1-shared-frontend) [ ${activeEditorShort} ]"
+}

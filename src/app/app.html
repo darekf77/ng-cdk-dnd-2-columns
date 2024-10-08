@@ -1,0 +1,15 @@
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px">
+  <list-item
+    style="width: 300px"
+    [item]="parentItem2"
+    [connectedDropListsIds]="connectedDropListsIds"
+    (itemDrop)="onDragDrop($event)">
+  </list-item>
+
+  <list-item
+    style="width: 300px"
+    [item]="parentItem"
+    [connectedDropListsIds]="connectedDropListsIds"
+    (itemDrop)="onDragDrop($event)">
+  </list-item>
+</div>
