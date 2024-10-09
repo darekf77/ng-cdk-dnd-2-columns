@@ -10,6 +10,10 @@
     [id]="item.uId"
     [cdkDragData]="item"
     [cdkDragDisabled]="dragDisabled">
+    @if(hideChildrenDropzone && !!parentItem) {
+    <div title="Drag this item with children">{{item.name}}</div>
+
+    } @else {
     <div
       title="Drag this item with children"
       class="item-drag-handle"
@@ -21,13 +25,18 @@
         drag_indicator
       </i>
     </div>
+    }
+
     <div
-      class="item-drag-preview"
+      class="item-drag-preview item-dropzone"
       *cdkDragPreview>
-      {{item.name}} with {{item.children.length}} child item(s)
+      <div>
+        <div>{{item.name}} with {{item.children.length}} child item(s)</div>
+      </div>
     </div>
   </div>
 
+  @if(hideChildrenDropzone && !!parentItem) { } @else {
   <ul
     cdkDropList
     class="item-dropzone"
@@ -37,6 +46,7 @@
     (cdkDropListDropped)="onDragDrop($event)">
     <li *ngFor="let subItem of item.children">
       <list-item
+        [hideChildrenDropzone]="hideChildrenDropzone"
         [item]="subItem"
         [parentItem]="item"
         [connectedDropListsIds]="allDropListsIds"
@@ -44,4 +54,5 @@
       </list-item>
     </li>
   </ul>
+  }
 </div>

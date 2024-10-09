@@ -8,7 +8,7 @@ import { Item } from '../../models/item';
   styleUrls: ['./list-item.scss']
 })
 export class ListItemComponent {
-  @Input() editorElement: boolean;
+  @Input() hideChildrenDropzone: boolean;
   @Input() item: Item;
   @Input() parentItem?: Item;
   @Input() public set connectedDropListsIds(ids: string[]) {

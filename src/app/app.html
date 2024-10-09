@@ -1,13 +1,13 @@
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px">
   <list-item
-    style="width: 300px"
+    style="width: 100%"
     [item]="parentItem2"
     [connectedDropListsIds]="connectedDropListsIds"
-    [editorElement]="true">
+    [hideChildrenDropzone]="true">
   </list-item>
 
   <list-item
-    style="width: 300px"
+    style="width: 100%"
     [item]="parentItem"
     [connectedDropListsIds]="connectedDropListsIds"
     (itemDrop)="onDragDrop($event)">
